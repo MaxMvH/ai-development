@@ -113,7 +113,7 @@ if st.button('Generate Description'):
     generated_text = predict_large_language_model_sample(
         "mvhmedia", 
         "text-bison@001", 
-        0.4, 
+        0.2, 
         1024, 
         0.95, 
         40, 
