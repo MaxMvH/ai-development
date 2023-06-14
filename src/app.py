@@ -1,8 +1,10 @@
+import os
+os.system('!pip install google-cloud-aiplatform')
+
 import streamlit as st
 import vertexai
 from vertexai.preview.language_models import TextGenerationModel
 
-import os
 os.system('gcloud auth activate-service-account generative-ai@mvhmedia.iam.gserviceaccount.com --key-file=utils/creds.json --project=mvhmedia')
 
 def predict_large_language_model_sample(
