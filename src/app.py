@@ -1,5 +1,5 @@
 import os
-os.system('!pip install google-cloud-aiplatform')
+os.system('pip install google-cloud-aiplatform')
 
 import streamlit as st
 import vertexai
