@@ -37,7 +37,7 @@ st.set_page_config(layout="wide")
 st.markdown(f"<h1 style='text-align: center; color: {COLOR};'>Automate Marketing Content Creation - Category Descriptions</h1>", unsafe_allow_html=True)
 
 # Add image at the top of the dashboard
-image = Image.open('utils/mvhmedia.jpg')  
+image = Image.open('../utils/mvhmedia.jpg')  
 st.image(image, use_column_width=True)
 
 # Collecting user inputs
