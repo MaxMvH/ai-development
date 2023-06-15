@@ -9,8 +9,6 @@ This project is built with [Streamlit](https://streamlit.io/), a powerful platfo
 - `ai-development`
   - `src`
     - `app.py`: The main application file which runs the Streamlit app.
-  - `utils`
-    - `creds.json`: Google Cloud service account credentials file.
 
 ## How It Works
 
