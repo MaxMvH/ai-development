@@ -2,6 +2,10 @@ import os
 import streamlit as st
 import vertexai
 from vertexai.preview.language_models import TextGenerationModel
+from PIL import Image
+
+# Initialize color
+COLOR = '#4081e3' 
 
 def predict_large_language_model_sample(
     project_id: str,
@@ -30,17 +34,30 @@ def predict_large_language_model_sample(
 # Use the full page instead of a narrow central column
 st.set_page_config(layout="wide")
 
-st.title('Automate Marketing Content Creation - Category Descriptions')
+st.markdown(f"<h1 style='text-align: center; color: {COLOR};'>Automate Marketing Content Creation - Category Descriptions</h1>", unsafe_allow_html=True)
+
+# Add image at the top of the dashboard
+image = Image.open('utils/mvhmedia.jpg')  
+st.image(image, use_column_width=True)
 
 # Collecting user inputs
-st.header('Enter the following details:')
-category_name = st.text_input("Category name")
-keywords = st.text_input("Keywords (separated by commas)")
-company = st.text_input("Company")
+st.markdown(f"<h2 style='text-align: left; color: {COLOR};'>Enter the following details:</h2>", unsafe_allow_html=True)
+
+st.markdown("#### **Category name**")
+st.markdown("This is the main category for which you are creating the description.")
+category_name = st.text_input("")
+
+st.markdown("#### **Keywords**")
+st.markdown("Enter the relevant keywords for your category (separated by commas). These will be used to generate the description.")
+keywords = st.text_input("", key='keywords')
+
+st.markdown("#### **Company**")
+st.markdown("Enter your company's name as you'd like it to appear in the description.")
+company = st.text_input("", key='company')
 
 # When the 'Generate Description' button is clicked, call the LLM function
 if st.button('Generate Description'):
-    st.header('Generated Description')
+    st.markdown(f"<h2 style='text-align: left; color: {COLOR};'>Generated Description</h2>", unsafe_allow_html=True)
 
     specific_prompt = f'''Background: When it comes to SEO for e-commerce sites, optimising category pages (a.k.a product listing pages) is key for success. Categories are some of the most authoritative pages on a site because they are linked from the navigation and link out to important assets like products. With their high level of authority, they can be much more effective at driving organic traffic than other pages like products. Some key insights for great category descriptions are providing useful and quality content, exhausting the topic, ensuring readability, adequately promoting your products.
 
@@ -121,4 +138,4 @@ if st.button('Generate Description'):
         "us-central1"
     )
     
-    st.write(generated_text)
+    st.markdown(generated_text, unsafe_allow_html=True)
