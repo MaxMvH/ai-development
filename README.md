@@ -9,6 +9,8 @@ This project is built with [Streamlit](https://streamlit.io/), a powerful platfo
 - `ai-development`
   - `src`
     - `app.py`: The main application file which runs the Streamlit app.
+  - `utils`
+    - `mvhmedia.jpg`: Image present in the dashboard.
 
 ## How It Works
 
