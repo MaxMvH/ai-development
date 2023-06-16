@@ -34,11 +34,13 @@ def predict_large_language_model_sample(
 # Use the full page instead of a narrow central column
 st.set_page_config(layout="wide")
 
-st.markdown(f"<h1 style='text-align: center; color: {COLOR};'>Automate Marketing Content Creation - Category Descriptions</h1>", unsafe_allow_html=True)
-
 # Add image at the top of the dashboard
 image = Image.open('../utils/mvhmedia.jpg')  
 st.image(image, use_column_width=True)
+
+st.divider()
+
+st.markdown(f"<h1 style='text-align: center; color: {COLOR};'>Automate Marketing Content Creation - Category Descriptions</h1>", unsafe_allow_html=True)
 
 # Collecting user inputs
 st.markdown(f"<h2 style='text-align: left; color: {COLOR};'>Enter the following details:</h2>", unsafe_allow_html=True)
@@ -54,6 +56,16 @@ keywords = st.text_input("", key='keywords')
 st.markdown("#### **Company**")
 st.markdown("Enter your company's name as you'd like it to appear in the description.")
 company = st.text_input("", key='company')
+
+st.divider()
+
+# Customize the temperature parameter to change the creativeness of the model
+st.markdown("#### **Model Parameters**")
+st.markdown("Here you can modify some of the basic parameters of the model to adapt it to your n>
+temp = st.slider("Temperature: Reflects the Creativeness of the Model (The higher the value, the>
+tok = st.slider("Output Tokens: Represents the number of charachters you want the output to be (>
+
+st.divider()
 
 # When the 'Generate Description' button is clicked, call the LLM function
 if st.button('Generate Description'):
@@ -130,12 +142,14 @@ if st.button('Generate Description'):
     generated_text = predict_large_language_model_sample(
         "mvhmedia", 
         "text-bison@001", 
-        0.2, 
-        1024, 
+        temp, 
+        tok, 
         0.95, 
         40, 
         global_prompt, 
         "us-central1"
     )
+
+    st.divider() 
     
-    st.markdown(generated_text, unsafe_allow_html=True)
+    st.code(generated_text, language='markdown', line_numbers=False)
